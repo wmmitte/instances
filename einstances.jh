@@ -1,0 +1,32 @@
+entity CategorieActivite {
+	categorie String
+}
+entity Client {
+	sigle String,
+    nom String
+}
+
+entity Projet {
+	nom String,
+    statut String,
+    next String,
+    commentaire String
+}
+
+entity Historique {
+	date LocalDate,
+    objet String
+}
+
+entity CategorieActivite {
+	categorie String
+}
+// relations
+relationship OneToMany {
+	Projet{historique} to	Historique,
+    Client{projet} to	Projet,
+    CategorieActivite{projet} to	Projet
+}
+paginate Historique with infinite-scroll
+service all with serviceImpl
+
