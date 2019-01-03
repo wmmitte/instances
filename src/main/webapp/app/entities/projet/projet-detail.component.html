@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="projet">
+            <h2><span>Projet</span> {{projet.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nom</span></dt>
+                <dd>
+                    <span>{{projet.nom}}</span>
+                </dd>
+                <dt><span>Statut</span></dt>
+                <dd>
+                    <span>{{projet.statut}}</span>
+                </dd>
+                <dt><span>Next</span></dt>
+                <dd>
+                    <span>{{projet.next}}</span>
+                </dd>
+                <dt><span>Commentaire</span></dt>
+                <dd>
+                    <span>{{projet.commentaire}}</span>
+                </dd>
+                <dt><span>Categorie Activite</span></dt>
+                <dd>
+                    <div *ngIf="projet.categorieActivite">
+                        <a [routerLink]="['/categorie-activite', projet.categorieActivite?.id, 'view']">{{projet.categorieActivite?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Client</span></dt>
+                <dd>
+                    <div *ngIf="projet.client">
+                        <a [routerLink]="['/client', projet.client?.id, 'view']">{{projet.client?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/projet', projet.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

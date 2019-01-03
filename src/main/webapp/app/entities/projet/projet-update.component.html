@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-projet-heading">Create or edit a Projet</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!projet.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="projet.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                        [(ngModel)]="projet.nom" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_statut">Statut</label>
+                    <input type="text" class="form-control" name="statut" id="field_statut"
+                        [(ngModel)]="projet.statut" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_next">Next</label>
+                    <input type="text" class="form-control" name="next" id="field_next"
+                        [(ngModel)]="projet.next" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_commentaire">Commentaire</label>
+                    <input type="text" class="form-control" name="commentaire" id="field_commentaire"
+                        [(ngModel)]="projet.commentaire" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_categorieActivite">Categorie Activite</label>
+                    <select class="form-control" id="field_categorieActivite" name="categorieActivite" [(ngModel)]="projet.categorieActivite" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="categorieActiviteOption.id === projet.categorieActivite?.id ? projet.categorieActivite : categorieActiviteOption" *ngFor="let categorieActiviteOption of categorieactivites; trackBy: trackCategorieActiviteById">{{categorieActiviteOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_client">Client</label>
+                    <select class="form-control" id="field_client" name="client" [(ngModel)]="projet.client" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="clientOption.id === projet.client?.id ? projet.client : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
