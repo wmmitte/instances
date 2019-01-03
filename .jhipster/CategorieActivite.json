@@ -1,0 +1,26 @@
+{
+    "name": "CategorieActivite",
+    "fields": [
+        {
+            "fieldName": "categorie",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "projet",
+            "otherEntityName": "projet",
+            "otherEntityRelationshipName": "categorieActivite"
+        }
+    ],
+    "changelogDate": "20190103143539",
+    "entityTableName": "categorie_activite",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
